@@ -1,0 +1,2 @@
+class Orede < ApplicationRecord
+end
