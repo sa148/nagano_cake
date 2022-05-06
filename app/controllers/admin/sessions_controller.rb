@@ -24,4 +24,17 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def new
+    redirect_to admin_homes_top_path
+  end
+
+  def create
+     redirect_to admin_homes_top_path
+  end
+
+  def logout
+    session[:admin_id] = nil
+    redirect_to admin_sign_in_path
+  end
+
 end

@@ -1,0 +1,8 @@
+<h1>Nagano_Cakeジャンル変更</h1>
+<%= form_with model: @genre do |f| %>
+<div class="field">
+  <%= f.label :ジャンル %><br>
+  <%= f.text_field :name %>
+</div>
+  <%= f.submit '変更', class: "btn btn-success" %>
+<% end %>

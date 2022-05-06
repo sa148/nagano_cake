@@ -2,15 +2,38 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <h1>Cake</h1>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <%= link_to admin_items_path, class: 'nav-link text-white'  do%>
+                <p>Items</p>
+                <% end %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-white' do%>
+                <p>Log out</p>
+                <% end %>
+                <%= link_to admin_genres_path, class: 'nav-link text-white'  do%>
+                <p>genres</p>
+                <% end %>
+              </ul>
+            </div>
+      </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>

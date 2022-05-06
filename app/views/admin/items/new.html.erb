@@ -1,0 +1,20 @@
+<h1>Nagano_Cake新商品</h1>
+<%= form_with model: @item,url:admin_items_path do |f| %>
+<div class="field">
+  <%= f.label :商品名 %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :ジャンル %><br>
+  <%= f.text_field :genre %>
+</div>
+<div class="field">
+  <%= f.label :商品説明 %><br>
+  <%= f.text_field :introduction %>
+</div>
+<div class="field">
+  <%= f.label :税抜価格 %><br>
+  <%= f.text_field :price %>
+</div>
+<%= f.submit '商品登録'%>
+<% end %>
