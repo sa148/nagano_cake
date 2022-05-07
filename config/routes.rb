@@ -9,7 +9,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 namespace :admin do
   get "/homes/top"
-  resources :items, :genres, only: [:new, :create, :show, :edit, :destroy, :index, :update]
+  resources :items, only: [:new, :create, :show, :edit, :index, :update]
+  resources :genres, only: [:index, :create, :edit, :update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

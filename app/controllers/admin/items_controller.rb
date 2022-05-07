@@ -19,16 +19,15 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    redirect_to admin_items_pathw
   end
 
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to admin_items_path
+    redirect_to admin_item_path
   end
 
   def  item_params
-    params.require(:item).permit(:item, :customer, :amount)
+    params.require(:item).permit(:genre, :name, :introduction, :price)
   end
 end

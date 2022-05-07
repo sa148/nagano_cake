@@ -1,0 +1,6 @@
+ja:
+  enums:
+    item:
+      item_status:
+        new_Products: '新商品'
+        inventory: '在庫'

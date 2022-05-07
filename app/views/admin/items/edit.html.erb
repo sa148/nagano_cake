@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<h1>商品改造</h1>
+<%= form_with model: @item,url:admin_item_path do |f| %>
+<div class="field">
+  <%= f.label :商品名 %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :ジャンル %><br>
+  <%= f.text_field :genre %>
+</div>
+<div class="field">
+  <%= f.label :商品説明 %><br>
+  <%= f.text_field :introduction %>
+</div>
+<div class="field">
+  <%= f.label :税抜価格 %><br>
+  <%= f.text_field :price %>
+</div>
+<%= f.select :item_status, Item.item_statuses.keys, class: "item_status" %>
+<%= f.submit '商品改造'%>
+<% end %>
+</div>
+  </div>
+    </div>

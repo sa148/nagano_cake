@@ -1,4 +1,4 @@
-<h1>Nagano_Cake新商品</h1>
+<h1>新商品登録</h1>
 <%= form_with model: @item,url:admin_items_path do |f| %>
 <div class="field">
   <%= f.label :商品名 %><br>
@@ -16,5 +16,6 @@
   <%= f.label :税抜価格 %><br>
   <%= f.text_field :price %>
 </div>
+<%= f.select :item_status, Item.item_statuses.keys, class: "item_status" %>
 <%= f.submit '商品登録'%>
 <% end %>
