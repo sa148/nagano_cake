@@ -34,7 +34,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   def logout
     session[:admin_id] = nil
-    redirect_to admin_sign_in_path
+    redirect_to admin_session_path
   end
 
 end

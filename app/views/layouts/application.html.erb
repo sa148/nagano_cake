@@ -21,14 +21,21 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <%= link_to admin_items_path, class: 'nav-link text-white'  do%>
-                <p>Items</p>
+                <p>商品</p>
                 <% end %>
                 <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-white' do%>
-                <p>Log out</p>
+                <p>退勤</p>
                 <% end %>
-                <%= link_to admin_genres_path, class: 'nav-link text-white'  do%>
-                <p>genres</p>
+                <%= link_to admin_genres_path, class: 'nav-link text-white' do%>
+                <p>ジャンル</p>
                 <% end %>
+                <%= link_to admin_session_path, class: 'nav-link text-white' do%>
+                <p>出社</p>
+                <% end %>
+                <%= link_to admin_customers_path, class: 'nav-link text-white' do%>
+                <p>顧客一覧</p>
+                <% end %>
+
               </ul>
             </div>
       </nav>

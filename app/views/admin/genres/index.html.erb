@@ -1,11 +1,18 @@
-<h1>Nagano_Cakeジャンル一覧</h1>
+<h1>ジャンル一覧</h1>
+<table>
+  <tbody>
+    <tr>
+      <td>ジャンル</td>
+    </tr>
+   </tbody>
+</table>
+<% @genres.each do |genre| %>
+  <%= genre.name%>
+<% end %>
 <%= form_with model: @genre,url:admin_genres_path do |f| %>
 <div class="field">
   <%= f.label :ジャンル %><br>
-  <%= f.text_field :mame %>
+  <%= f.text_field :name %>
 </div>
 <br>  <%= f.submit '新商品', class: "btn btn-success" %>
-<% end %>
-<% @genres.each do |genre| %>
-  <%= genre.name%>
 <% end %>

@@ -1,0 +1,13 @@
+<h1>顧客情報変更</h1>
+<%= form_with model: @customer,url:admin_customers_path do |f| %>
+<div class="field">
+  <%= f.label :苗字 %><br>
+  <%= f.text_field :last_name %>
+</div>
+<div class="field">
+  <%= f.label :名前 %><br>
+  <%= f.text_field :first_name %>
+</div>
+<%= f.select :customer_status, Customer.customer_statuses.keys, class: "customer_status" %>
+<%= f.submit '顧客情報変更'%>
+<% end %>
