@@ -3,13 +3,15 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+get "public/homes/top"
+
+resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 namespace :admin do
-  get "/homes/top"
-  post "/homes/top"
+  get "admin/homes/top"
   resources :sessions, only: [:new, :create, :destroy]
   resources :items, only: [:new, :create, :show, :edit, :index, :update]
   resources :genres, only: [:index, :create, :edit, :update]

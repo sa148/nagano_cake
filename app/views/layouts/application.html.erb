@@ -20,6 +20,7 @@
           </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
+                <% if admin_signed_in? %>
                 <%= link_to admin_items_path, class: 'nav-link text-white'  do%>
                 <p>商品</p>
                 <% end %>
@@ -35,7 +36,9 @@
                 <%= link_to admin_customers_path, class: 'nav-link text-white' do%>
                 <p>顧客一覧</p>
                 <% end %>
-
+                <% elsif customer_signed_in? %>
+                <% else %>
+                <% end %>
               </ul>
             </div>
       </nav>
