@@ -24,21 +24,34 @@
                 <%= link_to admin_items_path, class: 'nav-link text-white'  do%>
                 <p>商品</p>
                 <% end %>
+                <%= link_to admin_session_path, class: 'nav-link text-white' do%>
+                <p>ログイン</p>
+                <% end %>
                 <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-white' do%>
-                <p>退勤</p>
+                <p>ログアウト</p>
                 <% end %>
                 <%= link_to admin_genres_path, class: 'nav-link text-white' do%>
                 <p>ジャンル</p>
                 <% end %>
-                <%= link_to admin_session_path, class: 'nav-link text-white' do%>
-                <p>出社</p>
-                <% end %>
                 <%= link_to admin_customers_path, class: 'nav-link text-white' do%>
                 <p>顧客一覧</p>
                 <% end %>
+                <%= link_to admin_orders_path, class: 'nav-link text-white' do%>
+                <p>注文詳細</p>
+                <% end %>
+                <%= link_to admin_orede_details_path, class: 'nav-link text-white' do%>
+                <p>注文履歴一覧</p>
+                <% end %>
                 <% elsif customer_signed_in? %>
+                <%= link_to customers_path, class: 'nav-link text-white' do%>
+                <p>マイページ</p>
+                <% end %>
+                <%= link_to items_path, class: 'nav-link text-white' do%>
+                <p>商品一覧</p>
+                <% end %>
                 <% else %>
                 <% end %>
+
               </ul>
             </div>
       </nav>

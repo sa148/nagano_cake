@@ -10,10 +10,22 @@
       <th>郵便番号</th>
       <th>住所</th>
       <th>電話番号</th>
-      <th>ステータス</th>
     </tr>
  <tbody>
 </table>
+<% @customers.each do |customer|%>
+<table>
+  <tbody>
+    <tr>
+      <th><%= @customers.last_name%></th>
+      <th><%= @customers.first_name%></th>
+      <th><%= @customers.postal_code%></th>
+      <th><%= @customers.address%></th>
+      <th><%= @customers.telephone_number%></th>
+    </tr>
+ <tbody>
+</table>
+<% end %>
 <%= link_to "顧客詳細", admin_customers_path, class: "btn btn-success btn-sm btn-block sign_up" %>
 </div>
     </div>

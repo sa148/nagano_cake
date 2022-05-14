@@ -1,0 +1,19 @@
+<h1>商品一覧</h1>
+<table>
+  <tbody>
+    <tr>
+      <th>商品名</th>
+      <th>ジャンル</th>
+      <th>商品説明</th>
+      <th>値段</th>
+      <th>販売状況</th></th>
+    </tr>
+   </tbody>
+</table>
+<% @items.each do |item|%>
+<%= item.name%>
+<%= item.genre%>
+<%= item.introduction%>
+<%= item.price%>
+<% end %>
+<%#= link_to "商品詳細", items_path(items[:id]), class: 'nav-link text-white'%>

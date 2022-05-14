@@ -44,11 +44,14 @@ ActiveRecord::Schema.define(version: 2022_05_04_105901) do
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
+    t.boolean "is_deleted", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 2022_05_04_105901) do
     t.integer "shipping_fee", null: false
     t.integer "total_payemt", null: false
     t.integer "method_of_paymentder", null: false
-    t.integer "status", null: false
+    t.integer "order_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

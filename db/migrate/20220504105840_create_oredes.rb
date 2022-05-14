@@ -8,7 +8,7 @@ class CreateOredes < ActiveRecord::Migration[6.1]
       t.integer :shipping_fee, null: false
       t.integer :total_payemt, null: false
       t.integer :method_of_paymentder, null: false
-      t.integer :status, null: false
+      t.integer :order_status, null: false
       t.timestamps
     end
   end
