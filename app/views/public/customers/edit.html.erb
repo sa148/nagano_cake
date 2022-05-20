@@ -1,5 +1,6 @@
 <h1>登録情報更新</h1>
-<%= form_with model: @customers,url:customers_edit_path do |f| %>
+<%= link_to "退会確認画面", public_customers_unsubscribe_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+<%= form_with model: @customers,url:public_customers_edit_path do |f| %>
 <div class="field">
   <%= f.label :姓 %><br>
   <%= f.text_field :last_name %>

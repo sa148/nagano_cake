@@ -1,8 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>Nagano_Cakeジャンル変更</h1>
-<%= form_with model: @genre do |f| %>
+<%= form_with model: @genre,url:edit_admin_genre_path do |f| %>
 <div class="field">
   <%= f.label :ジャンル %><br>
   <%= f.text_field :name %>
 </div>
   <%= f.submit '変更', class: "btn btn-success" %>
 <% end %>
+</div>
+  </div>
+    </div>

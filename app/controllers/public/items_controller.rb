@@ -8,4 +8,8 @@ class Public::ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def  item_params
+    params.require(:item).permit(:genre, :name, :introduction, :price, :image)
+  end
+
 end

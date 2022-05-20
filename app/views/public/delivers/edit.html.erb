@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+<h1>配送先情報変更</h1>
+<%= form_with model: @delive,url:delives_path do |f| %>
+<div class="field">
+  <%= f.label :名前 %><br>
+  <%= f.text_field :customer %>
+</div>
+<div class="field">
+  <%= f.label :郵便番号 %><br>
+  <%= f.text_field :postal_code %>
+</div>
+<div class="field">
+  <%= f.label :住所 %><br>
+  <%= f.text_field :address %>
+</div>
+<div class="field">
+  <%= f.label :電話番号 %><br>
+  <%= f.text_field :telephone_number %>
+</div>
+<%= f.submit '配送先情報変更'%>
+<% end %>
+</div>
+    </div>
+      </div>

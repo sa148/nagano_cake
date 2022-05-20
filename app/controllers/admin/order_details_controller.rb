@@ -1,10 +1,11 @@
 class Admin::OrderDetailsController < ApplicationController
 
   def index
-    @orede_detail = @orede_details.all
+    @order_details = @Order_detail.all
   end
 
   def update
+    @order_details = @Order_detail.all
   end
 
 end

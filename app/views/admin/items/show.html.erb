@@ -5,11 +5,11 @@
 <table>
   <tbody>
     <tr>
+      <th>商品画像</th>
       <th>商品名</th>
-      <th>ジャンル</th>
       <th>商品説明</th>
       <th>値段</th>
-      <th>在庫</th>
+      <th>販売状況</th>
     </tr>
    </tbody>
 </table>
@@ -19,11 +19,10 @@
   </thead>
   <tbody>
     <tr>
+      <th><%#= image_tag @items, get_image(100,100) %><%#= link_to admin_item_path(@items.id)%></th>
       <th><%= @item.name%></th>
-      <th><%= @item.genre%></th>
       <th><%= @item.introduction%></th>
       <th><%= @item.price%></th>
-      <th><%= @item.item_status%></th>
     </tr>
   </tbody>
 </table>
