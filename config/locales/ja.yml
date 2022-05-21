@@ -4,3 +4,9 @@ ja:
       item_status:
         new_Products: '新商品'
         inventory: '在庫'
+ja:
+  enums:
+    customer:
+      response_status:
+        member: '会員'
+        secession: '退会済み'

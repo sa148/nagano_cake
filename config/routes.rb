@@ -10,11 +10,15 @@ namespace :public do
   get 'about' => 'homes#about'
   get 'customers' => 'customers#show'
   get 'customers/edit' => 'customers#edit'
+  post 'customers/edit' => 'customers#edit'
+  get 'customers/update' => 'customers#update'
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   get 'customers/withdrawal' => 'customers#withdrawal'
-
+  patch 'customers/withdrawal' => 'customers#withdrawal'
+  delete 'cart_items' => 'cart_items#destory_all'
     resources :delivers, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destory]
 end
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -22,12 +26,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 namespace :admin do
   root to: 'homes#top'
-    get 'items/show' => 'items#show'
-    get 'items/update' => 'items#update'
     resources :sessions, only: [:new, :create, :destroy]
-    resources :items, only: [:new, :create, :edit, :index, :show]
-    resources :genres, only: [:index, :create, :update, :edit]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :items, only: [:new, :create, :edit, :index, :show, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update, :destroy]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update, :index]
   end

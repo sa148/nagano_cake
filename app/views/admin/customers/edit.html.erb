@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>顧客情報変更</h1>
 <%= form_with model: @customer,url:admin_customers_path do |f| %>
 <div class="field">
@@ -8,6 +11,9 @@
   <%= f.label :名前 %><br>
   <%= f.text_field :first_name %>
 </div>
-<%= f.select :customer_status, Customer.customer_statuses.keys, class: "customer_status" %>
+<%= link_to "退会処理", admin_customers_path(@customer.id), class: "btn btn-sm btn-danger", method: :delete %>
 <%= f.submit '顧客情報変更'%>
 <% end %>
+</div>
+  </div>
+    </div>

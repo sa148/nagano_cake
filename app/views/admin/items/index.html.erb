@@ -17,11 +17,15 @@
 <table>
   <tbody>
     <tr>
-      <th><%#= image_tag @items, get_image(100,100) %><%#= link_to admin_item_path(@items.id)%></th>
+      <th>
+        <%= link_to admin_item_path(item.id) do%>
+          <%= image_tag item.get_image %>
+        <% end %>
+      </th>
       <th><%= item.name%></th>
       <th><%= item.introduction%></th>
       <th><%= item.price%></th>
-      <td><%= link_to '商品詳細',admin_item_path(item.id), class: "btn btn-success btn-sm btn-block sign_up"%></td>
+      <td><%= link_to '商品詳細',admin_item_path(item.id),class: "btn btn-success btn-sm btn-block sign_up"%></td>
     </tr>
     </tbody>
 </table>

@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  enum response_status: { member: 0, secession: 1 }
   def active_for_authentication?
     super && (is_deleted == false)
   end

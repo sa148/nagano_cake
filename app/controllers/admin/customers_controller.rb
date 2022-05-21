@@ -18,4 +18,16 @@ class Admin::CustomersController < ApplicationController
     redirect_to admin_customers_path
   end
 
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to admin_customers_path
+  end
+
+  private
+
+  def  customer_params
+    params.require(:customer).permit(:first_name, :postal_code, :address, :telephone_number, :is_deleted)
+  end
+
 end
