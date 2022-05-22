@@ -1,4 +1,6 @@
 <h1>商品カゴ</h1>
+<% @items.each do |item| %>
+<table>
 <thead>
   <th>商品画像</th>
   <th>商品名</th>
@@ -6,15 +8,16 @@
   <th>値段</th>
 </thead>
 <tbody>
-<% @items.each do |item| %>
   <tr>
-      <th><%= link_to '商品詳細',admin_item_path(item.id)%></th>
+      <th><%= image_tag item.get_image %></th>
       <th><%= item.name%></th>
       <th><%= item.introduction%></th>
       <th><%= item.price%></th>
   </tr>
 </tbody>
+</table>
 <% end %>
+<table>
 <thead>
     <th>単価(税込)</th>
     <th>小計</th>
@@ -26,5 +29,9 @@
         <td><%= cart_item.subtotal%></td>
         <% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
     </tr>
-<% end %>
 </tbody>
+</table>
+<% end %>
+<%= form_with model: @order,url:public_orders_path do |f| %>
+<%= f.submit '注文画面へ'%>
+

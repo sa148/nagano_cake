@@ -4,30 +4,30 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find_by(params[:email])
+    @customer = current_customer
   end
 
   def update
-     @customer = Customer.find_by(params[:email])
+     @customer = current_customer
      @customer.update(customer_params)
      redirect_to public_customers_path
   end
 
   def unsubscribe
-    @customer = Customer.find_by(email: params[:email])
+    @customer = current_customer
   end
 
   def withdrawal
-    @customer = customer.find_by(email: params[:email])
-    @customers.update(is_valid: false)
+    @customer = current_customer
+    @customer.update(is_deleted: true)
     reset_session
-    redirect_to homes_top_path
+    redirect_to public_homes_path
   end
 
   private
 
   def  customer_params
-    params.require(:customer).permit(:first_name, :postal_code, :address, :telephone_number, :is_deleted)
+    params.require(:customer).permit(:first_name, :postal_code, :address, :telephone_number, :is_deleted, :email)
   end
 
 end

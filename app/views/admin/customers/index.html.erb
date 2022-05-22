@@ -2,32 +2,30 @@
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
 <h1>顧客情報一覧</h1>
+<% @customers.each do |customer|%>
 <table>
-  <tbody>
+  <thead>
     <tr>
       <th>姓</th>
+      <th>名前</th>
       <th>郵便番号</th>
       <th>住所</th>
       <th>電話番号</th>
       <th>顧客状況</th>
     </tr>
- <tbody>
-</table>
-<%= form_with model: @customer,url:admin_customers_path do |f| %>
-<% @customers.each do |customer|%>
-<table>
+  <thead>
   <tbody>
     <tr>
       <th><%= customer.first_name%></th>
+      <th><%= customer.last_name%></th>
       <th><%= customer.postal_code%></th>
       <th><%= customer.address%></th>
       <th><%= customer.telephone_number%></th>
-      <th><th><%= f.select :is_deleted, Customer.is_deleted.keys, class: "is_deleted" %></th></th>
+      <th></th>
       <th><%= link_to "顧客詳細", admin_customer_path(customer.id), class: "btn btn-success btn-sm btn-block sign_up" %></th>
     </tr>
  <tbody>
 </table>
-<% end %>
 <% end %>
 </div>
     </div>

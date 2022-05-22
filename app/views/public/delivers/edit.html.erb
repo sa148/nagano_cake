@@ -2,10 +2,10 @@
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
 <h1>配送先情報変更</h1>
-<%= form_with model: @delive,url:delives_path do |f| %>
+<%= form_with model: @deliver,url:public_deliver_path do |f| %>
 <div class="field">
   <%= f.label :名前 %><br>
-  <%= f.text_field :customer %>
+  <%= f.text_field :name %>
 </div>
 <div class="field">
   <%= f.label :郵便番号 %><br>

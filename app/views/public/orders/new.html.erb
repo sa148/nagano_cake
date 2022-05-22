@@ -1,0 +1,13 @@
+<h1>注文情報入力</h1>
+<%= form_with model: @order,url:public_orders_path do |f| %>
+<h2>支払い方法</h2>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method, "クレジットカード" %>
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method, "銀行振込" %>
+<h2>お届け先</h2>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %>
+<options value="1">1</options>
+<options value="2">2</options>
+<options value="3">3</options>
+<%= f.submit '注文確認画面へ',class: "btn btn-success"%>

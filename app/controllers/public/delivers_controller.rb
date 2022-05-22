@@ -1,7 +1,8 @@
 class Public::DeliversController < ApplicationController
   def create
-    @deliver = Deliver.new
+    @deliver = Deliver.new(deliver_params)
     @deliver.save
+    redirect_to public_delivers_path
   end
 
   def index
@@ -16,15 +17,18 @@ class Public::DeliversController < ApplicationController
   def update
     @deliver = Deliver.find(params[:id])
     @deliver.update(deliver_params)
+    redirect_to public_delivers_path
   end
 
   def destroy
     @deliver = Deliver.find(params[:id])
     @deliver.destroy
-    redirect_to customers_path
+    redirect_to public_customers_path
   end
 
-  def  delive_params
+  private
+
+  def  deliver_params
     params.require(:deliver).permit(:name, :postal_code, :address, :telephone_number)
   end
 end

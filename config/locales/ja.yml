@@ -6,7 +6,7 @@ ja:
         inventory: '在庫'
 ja:
   enums:
-    customer:
-      response_status:
-        member: '会員'
-        secession: '退会済み'
+    order:
+      payment_method:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'

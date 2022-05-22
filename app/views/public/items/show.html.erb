@@ -1,4 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
 <h1>商品情報</h1>
+<%= form_with model: @item,url:public_items_path do |f| %>
 <table>
    <thead>
       <tr>
@@ -6,6 +10,7 @@
         <th>商品名</th>
         <th>商品説明</th>
         <th>値段</th>
+        <th>個数</th>
       </tr>
    </thead>
    <tbody>
@@ -14,6 +19,13 @@
         <th><%= @item.name%></th>
         <th><%= @item.introduction%></th>
         <th><%= @item.price%></th>
+        <th><%= f.select :amount, [['1',1], ['2',2], ['3',3]]%></th>
+        <th><%= f.submit '買い物かごへ', class: "btn btn-success" %></th>
       </tr>
   </tbody>
 </table>
+<% end %>
+<% end %>
+</div>
+    </div>
+      </div>

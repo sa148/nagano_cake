@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>配送先一覧画面</h1>
-<%= form_with model: @delive,url:public_delivers_path do |f| %>
+<%= form_with model: @deliver,url:public_delivers_path do |f| %>
 <div class="field">
-  <%= f.label :名前 %><br>
+  <%= f.label :配送場所 %><br>
   <%= f.text_field :name %>
 </div>
 <div class="field">
@@ -22,28 +22,26 @@
 <%= f.submit '配送先登録'%>
 <% end %>
 <h1>配送先一覧</h1>
+<% @delivers.each do |deliver|%>
 <table>
-  <tbody>
+  <thead>
     <tr>
-      <th>顧客名</th>
+      <th>配送場所</th>
       <th>郵便番号</th>
       <th>住所</th>
       <th>電話番号</th>
     </tr>
-   </tbody>
-</table>
-<% @delivers.each do |deliver|%>
-<table>
+   </thead>
   <tbody>
     <tr>
       <th><%= deliver.name%></th>
       <th><%= deliver.postal_code%></th>
-      <th><%= deliveraddress%></th>
+      <th><%= deliver.address%></th>
       <th><%= deliver.telephone_number%></th>
-      <th><%= link_to "配送先情報変更",delives_edit_path, class: "btn btn-success btn-sm btn-block sign_up"%></th>
-      <th><%= link_to '配送先削除',destroy_delives_path, method: :delete, class: "btn btn-success btn-sm btn-block sign_up" %></th>
+      <th><%= link_to "配送先情報変更", edit_public_deliver_path(deliver.id), class: "btn btn-success btn-sm btn-block sign_up"%></th>
+      <th><%= link_to '配送先削除', public_deliver_path(deliver.id), method: :delete, class: "btn btn-success btn-sm btn-block sign_up" %></th>
     </tr>
-    </tbody>
+  </tbody>
 </table>
 <% end %>
 </div>

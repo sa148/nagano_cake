@@ -7,13 +7,13 @@ class Public::CartItemsController < ApplicationController
 
   def update
       if @cart_item.update(cart_item_params)
-        redirect_to public_cart_items_path
+        redirect_to public_cart_item_path
         flash[:success] = 'カート内の商品を更新しました！'
       end
   end
 
-  def destory
-    @cart_item = CartItem.find(params[:id])
+  def destroy
+    @cart_item = Item.find(params[:id])
     @cart_item.destroy
     redirect_to public_cart_items_path
   end
@@ -49,7 +49,7 @@ class Public::CartItemsController < ApplicationController
 
     private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount, :customer)
   end
 
 end

@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_many :cart_items
   has_many :order_details
-  enum item_status: { 販売: 0, 在庫: 1 }
+  enum item_status: { sale: 0, sold out: 1 }
    def get_image
       unless image.attached?
         file_path = Rails.root.join('app/assets/images/no_image.jpg')
