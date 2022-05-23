@@ -1,22 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>商品カゴ</h1>
-<% @items.each do |item| %>
 <table>
 <thead>
   <th>商品画像</th>
   <th>商品名</th>
-  <th>商品説明</th>
+  <th>個数</th>
   <th>値段</th>
+  <th>購入取り消し</th>
 </thead>
+<% @cart_items.each do |cart_items| %>
 <tbody>
   <tr>
-      <th><%= image_tag item.get_image %></th>
-      <th><%= item.name%></th>
-      <th><%= item.introduction%></th>
-      <th><%= item.price%></th>
+      <th><%#= image_tag @item.get_image %></th>
+      <th><%#= @cart_item.item_id%></th>
+      <th><%= cart_item.amount %></th>
+      <th><%= @item.price%></th>
+      <tH><%= link_to '購入取り消し', public_cart_item_path(@cart_items), method: :delete, class: "btn btn-success btn-sm btn-block sign_up"%></tH>
   </tr>
 </tbody>
 </table>
 <% end %>
+</div>
+  </div>
+    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <table>
 <thead>
     <th>単価(税込)</th>
@@ -31,7 +42,11 @@
     </tr>
 </tbody>
 </table>
+<%= f.submit '注文画面へ', class: "btn btn-success"%>
+¥<%= @total.round.to_s(:delimited)%>
 <% end %>
-<%= form_with model: @order,url:public_orders_path do |f| %>
-<%= f.submit '注文画面へ'%>
+<%= link_to '買い物を続ける', public_customers_path, class: "btn btn-success"%>
+</div>
+  </div>
+    </div>
 

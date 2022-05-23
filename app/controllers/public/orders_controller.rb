@@ -2,7 +2,6 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Orede.new(order_params)
-    @order.save
     redirect_to confirm_path
   end
 
@@ -12,6 +11,8 @@ class Public::OrdersController < ApplicationController
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
     @order.name = @address.name
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
   end
 
   def complete

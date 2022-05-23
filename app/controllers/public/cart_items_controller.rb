@@ -1,8 +1,9 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @cart_items = CartItem.all
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def update
@@ -13,8 +14,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = Item.find(params[:id])
-    @cart_item.destroy
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    @cart_item = CartItem.find(params[:item_id])
+    @cart_item.item.destroy
     redirect_to public_cart_items_path
   end
 
@@ -25,20 +27,13 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = current_customer.cart_items.build(cart_item_params)
-    @current_item = CartItem.find_by(item_id: @cart_item.item_id,customer_id: @cart_item.customer_id)
-    if @current_item.nil?
-      if @cart_item.save
-        flash[:success] = 'カートに商品が追加されました！'
-        redirect_to public_cart_items_path
-      else
-        @carts_items = @customer.cart_items.all
-        render 'index'
-        flash[:danger] = 'カートに商品を追加できませんでした。'
-      end
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    if @cart_item.present?
+      @cart_item.update(amount: @cart_item.amount+=params[:cart_item][:amount].to_i)
+      redirect_to public_cart_items_path
     else
-      @current_item.quantity += params[:quantity].to_i
-      @current_item.update(cart_item_params)
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.save
       redirect_to public_cart_items_path
     end
   end
@@ -47,7 +42,8 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
   end
 
-    private
+  private
+
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount, :customer)
   end
