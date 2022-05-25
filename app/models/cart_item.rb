@@ -3,9 +3,9 @@ class CartItem < ApplicationRecord
   belongs_to :item
 
   def sum_of_price
-    item.taxin_price * quantity
+    item.price * amount
   end
   def subtotal
-      item.with_tax_price * amount
+    item.with_tax_price * amount
   end
 end
