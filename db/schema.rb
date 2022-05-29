@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2022_05_19_115033) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "order", null: false
+    t.integer "order_id", null: false
     t.integer "item", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2022_05_19_115033) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "oredes", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer "customer", null: false
     t.string "postal_code", null: false
     t.string "name", null: false

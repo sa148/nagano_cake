@@ -16,8 +16,9 @@ namespace :public do
   get 'customers/withdrawal' => 'customers#withdrawal'
   patch 'customers/withdrawal' => 'customers#withdrawal'
   post 'orders/confirm' => 'orders#confirm'
-  patch 'orders/complete' => 'orders/#complete'
-  get 'orders/thanks' => 'orders#thanks'
+  patch 'orders/complete' => 'orders#complete'
+  get 'orders' => 'orders#thanks'
+  delete 'cart_items' => 'cart_items#destory_all'
     resources :delivers, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]

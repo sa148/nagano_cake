@@ -19,7 +19,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destory_all
-    @customer.cart_items.destroy_all
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
     redirect_to public_cart_items_path
     flash[:info] = 'カートを空にしました。'
   end
