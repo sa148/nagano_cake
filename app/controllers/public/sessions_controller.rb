@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def after_sign_out_path_for(resource)
-    public_homes_path
+    public_path
   end
   def after_sign_in_path_for(resource)
     public_customers_path
@@ -36,6 +36,6 @@ def customer_state
   return if !@customer
   if @customer.valid_password?(params[:customer][:password])
   end
-  redirect_to public_homes_path
+  redirect_to public_path
 end
 end

@@ -6,7 +6,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 
 namespace :public do
 
-  get 'homes' => 'homes#top'
+  get '' => 'homes#top'
   get 'about' => 'homes#about'
   get 'customers' => 'customers#show'
   get 'customers/edit' => 'customers#edit'

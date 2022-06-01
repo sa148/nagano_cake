@@ -1,6 +1,7 @@
 class Public::DeliversController < ApplicationController
   def create
     @deliver = Deliver.new(deliver_params)
+    @deliver.customer_id = current_customer.id
     @deliver.save
     redirect_to public_delivers_path
   end
@@ -29,6 +30,6 @@ class Public::DeliversController < ApplicationController
   private
 
   def  deliver_params
-    params.require(:deliver).permit(:name, :postal_code, :address, :telephone_number)
+    params.require(:deliver).permit(:customer_id, :name, :postal_code, :address)
   end
 end

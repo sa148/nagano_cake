@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  has_many :addresses
+  has_many :delivers
   has_many :cart_items
   has_many :orders
   # Include default devise modules. Others available are:

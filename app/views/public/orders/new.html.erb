@@ -1,4 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>注文情報入力</h1>
+<% @cart_items.each do |cart_item| %>
 <%= form_with model: @order,url:public_orders_confirm_path do |f| %>
 <table>
   <thead>
@@ -11,10 +15,10 @@
   </thead>
   <tbody>
     <tr>
-      <td><%#= image_tag @cart_item.item.get_image %></td>
-      <td><%#= @cart_item.item.name %></td>
-      <td><%#= @cart_item.amount %></td>
-      <td>¥<%#= @cart_item.subtotal%></td>
+      <td><%= image_tag cart_item.item.get_image %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.amount %></td>
+      <td>¥<%= cart_item.subtotal%></td>
     </tr>
   </tbody>
 </table>
@@ -24,9 +28,10 @@
 <%= f.radio_button :payment_method, "transfer" %>
 <%= f.label :payment_method, "銀行振込" %>
 <h2>お届け先</h2>
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %>
-<options value="1">dd</options>
-<options value="2">a</options>
-<options value="3">b</options>
+<%= f.select :address_id, current_customer.delivers.all.map { |address| [address.name, address.id] } %>
 <%= f.submit '注文確認画面へ',class: "btn btn-success"%>
 <% end %>
+<% end %>
+</div>
+  </div>
+    </div>

@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
 
   def new
-    @cart_item = current_customer.cart_items
+    @cart_items = current_customer.cart_items
     @order = Order.new
   end
 
@@ -16,9 +16,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @cart_items = current_customer.cart_items
+    @order = Order.save
+    @address = Deliver.find(params[:order][:address_id])
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+    @order.name = @address.name
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    redirect_to public_orders_path
   end
 
   def thanks
+     @cart_items = current_customer.cart_items
   end
 
   def index
