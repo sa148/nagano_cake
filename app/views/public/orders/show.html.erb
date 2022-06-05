@@ -1,0 +1,19 @@
+<h1>注文履歴詳細</h1>
+<table>
+  <thead>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>支払方法</th>
+      <th>商品合計送料支払金額</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= @order.created_at%></th>
+      <th><%= @order.address%></th>
+      <th><%= @order.method_of_payment_i18n%></th>
+      <th>¥<%= @order.total_payemt%>¥<%= @order.shipping_fee%>¥<%= @order.total_payemt + @order.shipping_fee%></th>
+    </tr>
+  </tbody>
+</table>

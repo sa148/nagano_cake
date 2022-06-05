@@ -16,13 +16,12 @@ namespace :public do
   get 'customers/withdrawal' => 'customers#withdrawal'
   patch 'customers/withdrawal' => 'customers#withdrawal'
   post 'orders/confirm' => 'orders#confirm'
-  patch 'orders/complete' => 'orders#complete'
-  get 'orders' => 'orders#thanks'
+  get 'orders/complete' => 'orders#complete'
   delete 'cart_items' => 'cart_items#destory_all'
     resources :delivers, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show]
+    resources :orders, only: [:new, :index, :show, :create]
 end
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

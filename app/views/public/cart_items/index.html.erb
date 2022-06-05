@@ -26,15 +26,15 @@
     <td>¥<%= @total.round.to_s(:delimited)%></td>
     <%= f.hidden_field :cart_items,value: @cart_item %>
     <td>¥<%= cart_item.subtotal%></td>
+    <td><%= link_to '購入取り消し', public_cart_item_path(cart_item), method: :delete, class: "btn btn-success btn-sm btn-block sign_up"%></td><br>
   </tr>
 </tbody>
 </table>
 <%= f.submit '注文画面へ', class: "btn btn-success"%>
-<%= link_to '買い物を続ける', public_customers_path, class: "btn btn-success"%>
-<br><%= link_to '購入取り消し', public_cart_item_path(cart_item), method: :delete, class: "btn btn-success btn-sm btn-block sign_up"%>
+<%= link_to '空にする', public_cart_items_path, method: :delete, class: "btn btn-success"%><br>
 <% end %>
+<br><%= link_to '買い物を続ける', public_customers_path, class: "btn btn-success"%>
 <% end %>
-<br><%= link_to '空にする', public_cart_items_path, method: :delete, class: "btn btn-success btn-sm btn-block sign_up"%>
 </div>
   </div>
     </div>

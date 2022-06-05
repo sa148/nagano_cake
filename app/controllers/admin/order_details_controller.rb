@@ -1,11 +1,11 @@
 class Admin::OrderDetailsController < ApplicationController
 
-  def index
-    @order_details = @Order_detail.all
+  def update
+
   end
 
-  def update
-    @order_details = @Order_detail.all
+  def order_details_params
+    params.require(:order_details).permit(:order_id, :item_id, :price, :amount, :making_status)
   end
 
 end
