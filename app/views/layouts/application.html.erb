@@ -36,7 +36,7 @@
                 <%= link_to admin_customers_path, class: 'nav-link text-white' do%>
                 <p>顧客一覧</p>
                 <% end %>
-                <%= link_to admin_order_details_path, class: 'nav-link text-white' do%>
+                <%= link_to admin_orders_path, class: 'nav-link text-white' do%>
                 <p>注文履歴一覧</p>
                 <% end %>
                 <% elsif customer_signed_in? %>
@@ -53,6 +53,9 @@
                 <p>商品カゴ</p>
                 <% end %>
                 <% else %>
+                <%= link_to public_items_path, class: 'nav-link text-white' do%>
+                <p>商品一覧</p>
+                <% end %>
                 <% end %>
 
               </ul>

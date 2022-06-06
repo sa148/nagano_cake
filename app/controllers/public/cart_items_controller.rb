@@ -6,8 +6,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
       if @cart_item.update(cart_item_params)
-        redirect_to public_cart_item_path
+        redirect_to public_cart_items_path
         flash[:success] = 'カート内の商品を更新しました！'
       end
   end

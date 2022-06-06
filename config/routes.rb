@@ -17,10 +17,13 @@ namespace :public do
   patch 'customers/withdrawal' => 'customers#withdrawal'
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/complete' => 'orders#complete'
-  delete 'cart_items' => 'cart_items#destory_all'
     resources :delivers, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+    collection do
+    delete 'destory_all'
+    end
+    end
     resources :orders, only: [:new, :index, :show, :create]
 end
 
@@ -33,8 +36,8 @@ namespace :admin do
     resources :items, only: [:new, :create, :edit, :index, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update, :destroy]
-    resources :orders, only: [:show, :update]
-    resources :order_details, only: [:update, :index]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
