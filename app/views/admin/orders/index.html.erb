@@ -13,9 +13,8 @@
       <td><%= order.created_at.strftime('%Y年%m月%d日 %H時%M分')%></td>
       <td><%= order.customer_id%></td>
       <td><% order.order_details.each do |order_detail|%>
-      <%#= order_detail.cart_item.amount%>
+      <%= order_detail.amount%>
       <% end %></td>
-      <td><%= order.total_payemt + order.shipping_fee%></td>
       <td><%= link_to '注文詳細', admin_order_path(order.id),class: "btn btn-success btn-sm btn-block sign_up"%></td>
     </tr>
   </tbody>

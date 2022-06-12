@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
+    @item.item_status = "販売中"
   end
 
   def create

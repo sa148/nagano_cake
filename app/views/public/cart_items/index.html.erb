@@ -11,7 +11,6 @@
     <td>値段</td>
     <td>単価(税込)</td>
     <td>小計</td>
-    <td>合計</td>
   </tr>
 </thead>
 <% @cart_items.each do |cart_item| %>
@@ -26,7 +25,6 @@
     </th>
     <td><%= cart_item.item.price%></td>
     <td><%= cart_item.item.with_tax_price%></td>
-    <td>¥<%= @total.round.to_s(:delimited)%></td>
     <td>¥<%= cart_item.subtotal%></td>
     <td><%= link_to '購入取り消し', public_cart_item_path(cart_item), method: :delete, class: "btn btn-success btn-sm btn-block sign_up"%></td><br>
   </tr>

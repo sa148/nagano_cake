@@ -7,12 +7,13 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Deliver.find(params[:order][:address_id])
+    @address = current_customer.address
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.name = @address.name
+    @order.name = @address
     @cart_items = current_customer.cart_items
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @order.total_payemt = @total
   end
 
   def create
@@ -21,7 +22,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.shipping_fee = 800
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal}
     @order.total_payemt = @total
     @order.save
       @cart_items.each do |cart_item|
@@ -41,11 +42,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_detail = @order.order_details
   end
 
   private

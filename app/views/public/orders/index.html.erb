@@ -5,7 +5,6 @@
     <tr>
       <td>注文日時</td>
       <td>配送先</td>
-      <td>注文商品</td>
       <td>支払金額</td>
     </tr>
   </thead>
@@ -13,9 +12,6 @@
     <tr>
       <td><%= order.created_at.strftime('%Y年%m月%d日 %H時%M分')%></td>
       <td><%= order.address%></td>
-      <td><% order.order_details.each do |order_detail|%>
-      <%= order_detail.item.name%>
-      <% end %></td>
       <td><%= order.total_payemt + order.shipping_fee%></td>
       <td><%= link_to '注文詳細', public_order_path(order.id),class: "btn btn-success btn-sm btn-block sign_up"%></td>
     </tr>

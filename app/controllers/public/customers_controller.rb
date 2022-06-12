@@ -21,13 +21,13 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to public_homes_path
+    redirect_to public_path
   end
 
   private
 
   def  customer_params
-    params.require(:customer).permit(:first_name, :postal_code, :address, :telephone_number, :is_deleted, :email)
+    params.require(:customer).permit(:first_name, :last_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_deleted, :email)
   end
 
 end

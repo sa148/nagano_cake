@@ -23,7 +23,7 @@
 </table>
 <% end %>
 <%= form_with model: @order,url:public_orders_path,method: :post do |f| %>
-<P>合計金額 <%#= @order.total_payemt%></P>
+<P>合計金額 <%= @order.total_payemt%></P>
 <p>支払方法 <%= @order.method_of_payment_i18n %></p>
 <p>お届け先 <%= @order.address%></p>
 <%= f.hidden_field :method_of_payment,value: @order.method_of_payment %>
